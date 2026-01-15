@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public Camera renderCamera;          // kamera yang render ke RenderTexture
-    public RawImage renderImage;          // RawImage tempat RT ditampilkan
+    public Camera renderCamera;  // kamera yang render ke RenderTexture
+    public RawImage renderImage; // RawImage tempat Render Texture ditampilkan
 
     float x, y;
 
@@ -23,6 +23,13 @@ public class Player : MonoBehaviour
         transform.position += move * moveSpeed * Time.fixedDeltaTime;
     }
 
+
+/*
+Just in case kalian berhadapan sama fungsi ini, fungsi ini sebenarnya cuma rotasi player ke arah kursor, 
+alasan kenapa kok ini panjang banget adalah karena kita pakai render texture resolusi rendah buat ditampilin di kamera
+dan input koordinat kursor kita itu jadi sesuai dengan resoulusi render texture, sedangkan objeknya enggak, jadi gak sinkron.
+Gitu lah kira kira, intinya ini cuma buat player rotasi ke arah kursor.
+*/
     void RotateToMouse()
     {
         RectTransform rt = renderImage.rectTransform;
